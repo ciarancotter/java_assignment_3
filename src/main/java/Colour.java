@@ -1,5 +1,3 @@
-package java;
-
 public class Colour {
     float redColour;
     float greenColour;
