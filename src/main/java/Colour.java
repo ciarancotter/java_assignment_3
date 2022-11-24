@@ -12,4 +12,12 @@ public class Colour {
     public float getRedColour(){
         return redColour;
     }
+
+    public float getGreenColour(){
+        return greenColour;
+    }
+
+    public float getBlueColour(){
+        return blueColour;
+    }
 }
