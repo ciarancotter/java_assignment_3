@@ -2,9 +2,6 @@ public class Colour {
     private float redColour;
     private float greenColour;
     private float blueColour;
-    private int redBits;
-    private int greenBits;
-    private int blueBits;
 
     public Colour(float red, float green, float blue){
         redColour = red;
@@ -13,32 +10,24 @@ public class Colour {
     }
 
     public Colour(String bits){
-        redBits = Integer.parseInt(bits.substring(0, 8), 2);
-        greenBits = Integer.parseInt(bits.substring(8, 16), 2);
-        blueBits = Integer.parseInt(bits.substring(16, 24), 2);
+        int redBits = Integer.parseInt(bits.substring(0, 8), 2);
+        int greenBits = Integer.parseInt(bits.substring(8, 16), 2);
+        int blueBits = Integer.parseInt(bits.substring(16, 24), 2);
+
+        redColour = redBits / 128;
+        greenColour = greenBits / 128;
+        blueColour = blueBits / 128;
     }
 
-    public int getRedBits(){
-        return redBits;
-    }
-
-    public int getGreenBits(){
-        return greenBits;
-    }
-
-    public int getBlueBits(){
-        return blueBits;
-    }
-
-    public float getRedColourFloat(){
+    public float getRedColour(){
         return redColour;
     }
 
-    public float getGreenColourFloat(){
+    public float getGreenColour(){
         return greenColour;
     }
 
-    public float getBlueColourFloat(){
+    public float getBlueColour(){
         return blueColour;
     }
 }

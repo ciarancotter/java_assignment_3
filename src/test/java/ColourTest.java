@@ -6,36 +6,36 @@ public class ColourTest {
     @Test
     void testGetRedColourFloat(){
         Colour colour = new Colour(1,0, 0);
-        assertEquals(1, colour.getRedColourFloat());
+        assertEquals(1, colour.getRedColour());
     }
 
     @Test
     void testGetGreenColourFloat(){
         Colour colour = new Colour(0,1, 0);
-        assertEquals(1, colour.getGreenColourFloat());
+        assertEquals(1, colour.getGreenColour());
     }
 
     @Test
     void testGetBlueColourFloat(){
         Colour colour = new Colour(0,0, 1);
-        assertEquals(1, colour.getBlueColourFloat());
+        assertEquals(1, colour.getBlueColour());
     }
 
     @Test
-    void testGetRedBits(){
+    void testGetRedColourString(){
         Colour colour = new Colour("100000000000000000000000");
-        assertEquals(128, colour.getRedBits());
+        assertEquals(1, colour.getRedColour());
     }
 
     @Test
-    void testGetGreenBits(){
+    void testGetGreenColourString(){
         Colour colour = new Colour("000000001000000000000000");
-        assertEquals(128, colour.getGreenBits());
+        assertEquals(1, colour.getGreenColour());
     }
 
     @Test
-    void testGetBlueBits(){
+    void testGetBlueColourString(){
         Colour colour = new Colour("000000000000000010000000");
-        assertEquals(128, colour.getBlueBits());
+        assertEquals(1, colour.getBlueColour());
     }
 }
