@@ -38,4 +38,26 @@ public class ColourTest {
         Colour colour = new Colour("000000000000000010000000");
         assertEquals(1, colour.getBlueColour());
     }
+
+    @Test
+    void testGetColourIndexException(){
+
+        Exception exception = assertThrows(StringIndexOutOfBoundsException.class,
+                () -> {Colour colour = new Colour("5");});
+        String actualMessage = exception.getMessage();
+        String expectedMessage = "Range [0, 8) out of bounds for length 1";
+
+        assertEquals(expectedMessage, actualMessage);
+
+    }
+
+    @Test
+    void testGetColourNumberFormatException(){
+
+        Exception exception = assertThrows(NumberFormatException.class,
+                () -> {Colour colour = new Colour("555555555555555555555555555");});
+        String actualMessage = exception.getMessage();
+        String expectedMessage = "For input string: \"55555555\" under radix 2";
+        System.out.println(actualMessage);
+    }
 }
