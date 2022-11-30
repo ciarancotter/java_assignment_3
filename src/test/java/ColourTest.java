@@ -4,37 +4,37 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ColourTest {
 
     @Test
-    void testGetRedColourFloat(){
+    void testGetRedColourFloat() throws IncorrectRGBFloatException {
         Colour colour = new Colour(1,0, 0);
         assertEquals(1, colour.getRedColour());
     }
 
     @Test
-    void testGetGreenColourFloat(){
+    void testGetGreenColourFloat() throws IncorrectRGBFloatException {
         Colour colour = new Colour(0,1, 0);
         assertEquals(1, colour.getGreenColour());
     }
 
     @Test
-    void testGetBlueColourFloat(){
+    void testGetBlueColourFloat() throws IncorrectRGBFloatException {
         Colour colour = new Colour(0,0, 1);
         assertEquals(1, colour.getBlueColour());
     }
 
     @Test
-    void testGetRedColourString(){
+    void testGetRedColourString() throws InvalidCharacterException {
         Colour colour = new Colour("100000000000000000000000");
         assertEquals(1, colour.getRedColour());
     }
 
     @Test
-    void testGetGreenColourString(){
+    void testGetGreenColourString() throws InvalidCharacterException {
         Colour colour = new Colour("000000001000000000000000");
         assertEquals(1, colour.getGreenColour());
     }
 
     @Test
-    void testGetBlueColourString(){
+    void testGetBlueColourString() throws InvalidCharacterException {
         Colour colour = new Colour("000000000000000010000000");
         assertEquals(1, colour.getBlueColour());
     }
@@ -43,21 +43,32 @@ public class ColourTest {
     void testGetColourIndexException(){
 
         Exception exception = assertThrows(StringIndexOutOfBoundsException.class,
-                () -> {Colour colour = new Colour("5");});
+                () -> {Colour colour = new Colour("111111111");});
         String actualMessage = exception.getMessage();
-        String expectedMessage = "Range [0, 8) out of bounds for length 1";
-
-        assertEquals(expectedMessage, actualMessage);
-
+        String expectedMessage = "out of bounds";
+        System.out.println(actualMessage);
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
-    void testGetColourNumberFormatException(){
+    void testIncorrectFloatException(){
 
-        Exception exception = assertThrows(NumberFormatException.class,
-                () -> {Colour colour = new Colour("555555555555555555555555555");});
+        Exception exception = assertThrows(IncorrectRGBFloatException.class,
+                () -> {Colour colour = new Colour(0f, 1.5f, 0f);});
         String actualMessage = exception.getMessage();
-        String expectedMessage = "For input string: \"55555555\" under radix 2";
+        String expectedMessage = "Float values should be between 0 and 1.";
         System.out.println(actualMessage);
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    void testInvalidCharactersException(){
+
+        Exception exception = assertThrows(InvalidCharacterException.class,
+                () -> {Colour colour = new Colour("500000000000000000000000");});
+        String actualMessage = exception.getMessage();
+        String expectedMessage = "String characters should be either 0 or 1.";
+        System.out.println(actualMessage);
+        assertEquals(expectedMessage, actualMessage);
     }
 }
